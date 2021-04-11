@@ -7,6 +7,10 @@ var app = express();
 var port = process.env.PORT || 5000;
 
 // routes will go here
+app.get("/", async function (req, res) {
+  res.send("<h1>ISIZER</h1>");
+});
+
 app.get("/api/resize", async function (req, res) {
   const { wd, ht, url } = req.query;
 
@@ -30,5 +34,6 @@ app.get("/api/resize", async function (req, res) {
 });
 
 // start the server
-app.listen(port);
-console.log("Server started! At http://localhost:" + port);
+app.listen(port, () => {
+  console.log("Server started! at port", port);
+});
